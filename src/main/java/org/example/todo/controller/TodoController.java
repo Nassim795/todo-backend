@@ -1,5 +1,6 @@
 package org.example.todo.controller;
 
+import jakarta.validation.Valid;
 import org.example.todo.service.TodoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import java.util.List;
 @RequestMapping("/api/todos")
 public class TodoController {
 
-    private TodoServiceImpl todoService;
+    private final TodoServiceImpl todoService;
 
     @Autowired
     public TodoController(TodoServiceImpl todoService) {
@@ -24,7 +25,7 @@ public class TodoController {
     }
 
     @PostMapping
-    public Todo createTodo(@RequestBody Todo todo) {
+    public Todo createTodo(@Valid @RequestBody Todo todo) {
         return todoService.createTodo(todo);
     }
 
@@ -34,7 +35,7 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
-    public Todo updateTodoById(@PathVariable Long id, @RequestBody Todo todo) {
+    public Todo updateTodoById(@PathVariable Long id,@Valid @RequestBody Todo todo) {
         return todoService.updateTodoById(id, todo);
     }
 

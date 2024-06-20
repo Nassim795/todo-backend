@@ -3,6 +3,7 @@ package org.example.todo.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Todo {
@@ -10,9 +11,11 @@ public class Todo {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message = "Title is mandatory")
     private String title;
     private String description;
     private boolean completed;
+
     //constructors
     public Todo() {
     }
@@ -24,7 +27,6 @@ public class Todo {
     }
 
     //getters and setters
-
     public Long getId() {
         return id;
     }
