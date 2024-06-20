@@ -10,7 +10,7 @@ This is a simple Todo-List application backend built with Spring Boot. The backe
 
 ## Prerequisites
 
-- Java 11 or higher
+- Java 17
 - Maven
 - MySQL
 
